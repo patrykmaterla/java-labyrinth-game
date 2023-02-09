@@ -40,19 +40,31 @@ public class Player implements java.awt.event.KeyListener {
 	}
 	
 	public void moveUp() {
-		y = y - speed;
+		int newY = y - speed;
+		if (gameComponent.isValidMove(x, newY)) {
+			y = y - speed;
+		}
 	}
 	
 	public void moveDown() {
-		y = y + speed;
+		int newY = y + speed;
+		if (gameComponent.isValidMove(x, newY)) {
+			y = y + speed;
+		}
 	}
 	
 	public void moveLeft() {
-		x = x - speed;
+		int newX = x - speed;
+		if (gameComponent.isValidMove(newX, y)) {
+			x = x - speed;
+		}
 	}
 	
 	public void moveRight() {
-		x = x + speed;
+		int newX = x + speed;
+		if (gameComponent.isValidMove(newX, y)) {
+			x = x + speed;
+		}
 	}
 	
 	@Override

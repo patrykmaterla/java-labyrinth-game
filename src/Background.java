@@ -17,15 +17,11 @@ public class Background extends JComponent {
 	public Background() {
 		this.setSize(760, 760);
 		this.setPreferredSize(new Dimension(760, 760));
-		this.setBackground(Color.red);
-
 		try {
 			backgroundImage = ImageIO.read(getClass().getResource("/resources/background.jpg"));
 		} catch (IOException ex) {
 			Logger.getLogger(Background.class.getName()).log(Level.SEVERE, null, ex);
 		}
-
-		
 	}
 	
 	@Override

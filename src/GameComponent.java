@@ -23,8 +23,9 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
-public class GameComponent extends JComponent {
+public class GameComponent extends JComponent implements ActionListener {
 	
 	//	private List<Rectangle> box = new ArrayList<>(); 
 	private Player player;
@@ -33,6 +34,9 @@ public class GameComponent extends JComponent {
 	private Level level;
 	private Clip backgroundAudio;
 	private URL url;
+	private Timer componentTimer;
+	private int width;
+	private int height;
 	
 	
 	public GameComponent() {
@@ -40,6 +44,9 @@ public class GameComponent extends JComponent {
 		addKeyListener(player);
 		setFocusable(true);
 		level = new Level();
+		
+		width = 40 * 17;
+		height = 40 * 17;
 		
 		initAudio();
 		
@@ -60,7 +67,20 @@ public class GameComponent extends JComponent {
 			
 //		box.add(new Rectangle(50, 50, 50, 50));
 
+		componentTimer = new Timer(100, this);
+		componentTimer.start();
+
 	}
+
+	
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+	
 	
 	public void initAudio() {
 		try {
@@ -79,6 +99,33 @@ public class GameComponent extends JComponent {
 			Logger.getLogger(GameComponent.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		backgroundAudio.start();
+	}
+	
+	public void actionPerformed(ActionEvent actionEvent) {
+//		if (objectCordinates.get(0).x >= width - bufferedImage.getWidth(null) || objectCordinates.get(0).x < 0) {
+//			xVelocity = xVelocity * -1;
+//		}
+//		objectCordinates.get(0).x = objectCordinates.get(0).x + xVelocity;
+//		objectCordinates.get(1).x = objectCordinates.get(1).x + xVelocity;
+//		orientation = orientation + 0.1f;
+		
+		/*
+		Iterator<AnimationShape> animationShapeIterator = animationShapeList.iterator();
+		while (animationShapeIterator.hasNext()) {
+			animationShapeIterator.next().action();
+		}
+		repaint();
+		
+		Iterator<AnimationRaster> animationRasterIterator = animationRastersList.iterator();
+		while	(animationRasterIterator.hasNext()) {
+			animationRasterIterator.next().action();
+		}
+		repaint();
+		*/
+//		animationRaster.action();
+		System.out.println("testTEST");
+		player.action();
+		repaint();
 	}
 	
 	@Override

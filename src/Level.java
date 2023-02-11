@@ -13,7 +13,9 @@ public class Level {
 
 	private BufferedImage texture;
 	private BufferedImage boxTexture;
+	private BufferedImage floorTexture;
 	private List<Box> boxes = new ArrayList<>();
+	private List<Box> floor = new ArrayList<>();
 	private int boxWidth;
 	private int boxHeight;
 	
@@ -31,19 +33,24 @@ public class Level {
 			Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		boxTexture = texture.getSubimage(9*16, 17*16, 16, 16);
+		
+		try {
+			texture = ImageIO.read(GameComponent.class.getResource("/resources/textures.png"));
+		}
+		catch (IOException ex) {
+			Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		}
+		floorTexture = texture.getSubimage(0 * 16, 17 * 16, 16, 16);
 	}
 	
 	private void initLevel() {
+		for (int i = 0; i <= 16; i++) {
+			for (int j = 0; j <= 16; j++) {
+				floor.add(new Box(i * boxWidth, j * boxHeight, boxWidth, boxHeight, floorTexture));
+			}
+		}
 		
-		
-//		for (int i = 0; i <= 18; i++) {
-//			boxes.add(new Box(i * boxWidth, 0 * boxHeight, boxWidth, boxHeight, boxTexture));
-//			boxes.add(new Box(i * boxWidth, 17 * boxHeight, boxWidth, boxHeight, boxTexture));
-//			boxes.add(new Box(0 * boxWidth, i * boxHeight, boxWidth, boxHeight, boxTexture));
-//			boxes.add(new Box(17 * boxWidth, i * boxHeight, boxWidth, boxHeight, boxTexture));	
-//		}
-		
-		for (int i = 0; i < 17; i++) {
+		for (int i = 0; i <= 17; i++) {
 			int[] validValues = {0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
 			if (Arrays.binarySearch(validValues, i) >= 0) {
 				boxes.add(new Box(i * boxWidth, 0 * boxHeight, boxWidth, boxHeight, boxTexture));
@@ -157,12 +164,14 @@ public class Level {
 			if (Arrays.binarySearch(validValues, i) >= 0) {
 				boxes.add(new Box(i * boxWidth, 16 * boxHeight, boxWidth, boxHeight, boxTexture));
 			}
-		}
-		
+		}	
 	}
 	
 	
 	public void draw(Graphics g) {
+		for (Box box : floor) {
+			g.drawImage(box.getBufferedImage(), box.getRectangle().x, box.getRectangle().y, box.getRectangle().width, box.getRectangle().height, null);
+		}
 		for (Box box : boxes) {
 			g.drawImage(box.getBufferedImage(), box.getRectangle().x, box.getRectangle().y, box.getRectangle().width, box.getRectangle().height, null);
 		}

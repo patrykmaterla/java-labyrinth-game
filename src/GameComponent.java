@@ -84,11 +84,9 @@ public class GameComponent extends JComponent {
 	@Override
 	public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-		  		  graphics.setColor(Color.red);
+			graphics.setColor(Color.red);
 
-		  System.out.println("tak");
 //        graphics.fillRect(player.getX(), player.getY(), 50, 50);
-			player.draw(graphics);
 		
 		  // paint boxes
 		
@@ -104,6 +102,7 @@ public class GameComponent extends JComponent {
 
 		level.draw(graphics);
 
+			player.draw(graphics);
 
 //		boxes.add(new Box(0, 0, 50, 50, croppedImage));
 //		boxes.add(new Box(50, 0, 50, 50, croppedImage));

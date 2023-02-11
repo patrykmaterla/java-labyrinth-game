@@ -80,7 +80,7 @@ public class Player implements java.awt.event.KeyListener {
 	}
 	
 	private boolean isValidMove(int newX, int newY) {
-		Rectangle playerBounds = new Rectangle(newX, newY, 50, 50);
+		Rectangle playerBounds = new Rectangle(newX, newY, 30, 30);
 		List<Box> boxes = level.getBoxes();
 		System.out.println(playerBounds.x + "  " + WIDTH);
 				System.out.println(playerBounds.y + "  " + HEIGHT);
@@ -91,18 +91,18 @@ public class Player implements java.awt.event.KeyListener {
 				return false;
 			}
 		}
-		if (playerBounds.x+playerBounds.width+10 >= WIDTH || playerBounds.x < (WIDTH-WIDTH) ) {
-			return false;
-		}
-		if (playerBounds.y+playerBounds.height+35 >= HEIGHT || playerBounds.y < 0 ) {
-			return false;
-		}
+//		if (playerBounds.x+playerBounds.width+10 >= WIDTH || playerBounds.x < (WIDTH-WIDTH) ) {
+//			return false;
+//		}
+//		if (playerBounds.y+playerBounds.height+35 >= HEIGHT || playerBounds.y < 0 ) {
+//			return false;
+//		}
 
 		return true;
 	}
 	
 	public void draw(Graphics g) {
-		g.fillRect(getX(), getY(), 50, 50);
+		g.fillRect(getX(), getY(), 30, 30);
 	}
 	
 	@Override

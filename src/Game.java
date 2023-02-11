@@ -7,8 +7,8 @@ public class Game extends JFrame {
 	
 //	private GameComponent gameComponent;
 	
-	private  int WIDTH = 960;
-	private  int HEIGHT = 720;
+	private  int WIDTH = 16 * 50;
+	private  int HEIGHT = 16 * 50;
 	
 	public Game() {
 		setTitle("My Game");
@@ -26,14 +26,6 @@ public class Game extends JFrame {
 
 	}
 
-	public int getWIDTH() {
-		return WIDTH;
-	}
-
-	public int getHEIGHT() {
-		return HEIGHT;
-	}
-	
 	public static void main(String[] args) {
 		new Game();
 	}

@@ -1,4 +1,3 @@
-
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -9,15 +8,16 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
+
 public class Level {
 
 	private BufferedImage texture;
 	private BufferedImage boxTexture;
 	private BufferedImage floorTexture;
-	private List<Box> boxes = new ArrayList<>();
-	private List<Box> floor = new ArrayList<>();
-	private int boxWidth;
-	private int boxHeight;
+	private final List<Box> boxes = new ArrayList<>();
+	private final List<Box> floor = new ArrayList<>();
+	private final int boxWidth;
+	private final int boxHeight;
 	
 	public Level() {
 		boxWidth = 40;
@@ -32,24 +32,26 @@ public class Level {
 		} catch (IOException ex) {
 			Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
-		boxTexture = texture.getSubimage(9*16, 17*16, 16, 16);
-		
+		boxTexture = texture.getSubimage(7*16, 18*16, 16, 16);
 		try {
 			texture = ImageIO.read(GameComponent.class.getResource("/resources/textures.png"));
 		}
 		catch (IOException ex) {
 			Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
-		floorTexture = texture.getSubimage(0 * 16, 17 * 16, 16, 16);
+		floorTexture = texture.getSubimage(2 * 16, 17 * 16, 16, 16);
 	}
 	
 	private void initLevel() {
+		
+		// create floor
 		for (int i = 0; i <= 16; i++) {
 			for (int j = 0; j <= 16; j++) {
 				floor.add(new Box(i * boxWidth, j * boxHeight, boxWidth, boxHeight, floorTexture));
 			}
 		}
 		
+		// create obstacles / walls
 		for (int i = 0; i <= 17; i++) {
 			int[] validValues = {0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
 			if (Arrays.binarySearch(validValues, i) >= 0) {

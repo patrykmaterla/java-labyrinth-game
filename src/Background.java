@@ -1,5 +1,3 @@
-
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -10,6 +8,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
+
 public class Background extends JComponent {
 
 	private BufferedImage backgroundImage;
@@ -18,7 +17,7 @@ public class Background extends JComponent {
 		this.setSize(760, 760);
 		this.setPreferredSize(new Dimension(760, 760));
 		try {
-			backgroundImage = ImageIO.read(getClass().getResource("/resources/background.jpg"));
+			backgroundImage = ImageIO.read(getClass().getResource("/resources/forest.jpg"));
 		} catch (IOException ex) {
 			Logger.getLogger(Background.class.getName()).log(Level.SEVERE, null, ex);
 		}

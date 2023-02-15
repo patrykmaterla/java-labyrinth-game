@@ -1,13 +1,9 @@
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -20,9 +16,6 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-
 
 
 public class Player implements java.awt.event.KeyListener {
@@ -40,9 +33,7 @@ public class Player implements java.awt.event.KeyListener {
 	private Clip winAudio;
 	private URL url;
 	private AudioInputStream audioInputStream;
-	private AffineTransform affineTransform;
 	private int keyFrame = 0;
-	private Timer componentTimer;
 	private int maxFrame = 3;
 	
 	public Player(int x, int y, int speed, GameComponent gameComponent) {
@@ -121,6 +112,7 @@ public class Player implements java.awt.event.KeyListener {
 		if (walkAudio.getFrameLength() == walkAudio.getFramePosition()) {
 			walkAudio.setFramePosition(0);
 		}
+		// check if player reach end of maze
 		if (getY() == 620) {
 			winAudio.start();
 			winAudio.setFramePosition(0);
@@ -153,28 +145,20 @@ public class Player implements java.awt.event.KeyListener {
 		Rectangle playerBounds = new Rectangle(newX, newY, 34, 34);
 		List<Box> boxes = level.getBoxes();
 		
-		System.out.println(playerBounds.x + "  " + WIDTH);
-		System.out.println(playerBounds.y + "  " + HEIGHT);
-
+		// check if player walk into wall
 		for (Box box : boxes ) {
 			if (playerBounds.intersects(box.getRectangle())) {
 				return false;
 			}
 		}
 		
+		// check if player walk into end of frame
 		if (playerBounds.x < 0 || playerBounds.x + playerBounds.width > gameComponent.getWidth() || playerBounds.y < 0 || playerBounds.y + playerBounds.height > gameComponent.getHeight()) {
 			return false;
 		}
 		
-//		if (playerBounds.x+playerBounds.width+10 >= WIDTH || playerBounds.x < (WIDTH-WIDTH) ) {
-//			return false;
-//		}
-//		if (playerBounds.y+playerBounds.height+35 >= HEIGHT || playerBounds.y < 0 ) {
-//			return false;
-//		}
 		return true;
 	}
-	
 	
 	public void action() {
 		if (keyFrame < maxFrame) {
@@ -186,31 +170,14 @@ public class Player implements java.awt.event.KeyListener {
 	}
 	
 	public void draw(Graphics g) {
-//		g.fillRect(getX(), getY(), 30, 30);
-//		g.drawImage(character, getX(), getY(), 30, 30, null);
-		
-// to do zoom da cat
-
 		Graphics graphicsTemp = g.create();
 		Graphics2D graphics2D = (Graphics2D) graphicsTemp;
-//		affineTransform = new AffineTransform();
-//		affineTransform.scale(2.0, 2.0);
-//		AffineTransformOp scaleOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
-		
-//		BufferedImage after = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-		
 		BufferedImage actualFrame = character.getSubimage(keyFrame * 34, 0, 34, 34);
-//		actualFrame = scaleOp.filter(actualFrame, actualFrame);
-
-		Graphics actualFrameGraphics = actualFrame.getGraphics();
 		graphics2D.drawImage(actualFrame, getX(), getY(), 34, 34, null);
-
 	}
 	
 	@Override
-	public void keyTyped(KeyEvent e) {
-
-	}
+	public void keyTyped(KeyEvent e) {}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -233,8 +200,6 @@ public class Player implements java.awt.event.KeyListener {
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-
-	}
+	public void keyReleased(KeyEvent e) {}
 
 }

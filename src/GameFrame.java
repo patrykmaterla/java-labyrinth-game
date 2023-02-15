@@ -1,12 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author Patryk
- */
 public class GameFrame extends javax.swing.JFrame {
 
 	/**
@@ -15,6 +6,7 @@ public class GameFrame extends javax.swing.JFrame {
 	public GameFrame() {
 		initComponents();
 		setResizable(false);
+		this.setTitle("Maze Game");
 	}
 
 	/**

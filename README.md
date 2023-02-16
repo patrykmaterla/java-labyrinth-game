@@ -38,11 +38,11 @@ The `Player` class handles keyboard events for moving the player, and collision 
 This project is intended as an educational resource for learning about game development in Java. It demonstrates how to use Java Swing to create a 2D game, and covers topics such as collision detection, keyboard input, and level design.
 
 
-#### Screenshots
+### Screenshots
 
 ![image](https://user-images.githubusercontent.com/101121453/219332087-972af9bd-27fb-458a-8317-15ab53af0a75.png)
 
-#### Built With
+### Built With
 
 - Java Swing
 - Java 2D Graphics
@@ -53,20 +53,18 @@ This project is intended as an educational resource for learning about game deve
 
 To run the game, you will need to have Java installed on your computer. 
 
-#### Prerequisites
+### Prerequisites
 
 - Java Development Kit (JDK) version 8 or later
 - Download source code or pre-compiled JAR file from the GitHub repository
 
-#### Run
+### Run
 
 Run the game using pre-compiled JAR file.
 In the project directory run following command:
 ```
-java -jar /dist/java-labyrinth-game.jar
+java -jar ./dist/java-labyrinth-game.jar
 ```
-
-
 
 <!-- LICENSE -->
 ## License

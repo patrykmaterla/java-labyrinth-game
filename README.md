@@ -23,8 +23,6 @@ This is a 2D game created using Java Swing. The game features a player that can 
   </ol>
 </details>
 
-<br>
-
 ## About
 
 This is a 2D game created using Java Swing. The game features a player that can move using the arrow keys, and obstacles that the player cannot cross. The player must navigate through the obstacles to reach the end of the level. The game uses a custom `GameComponent` class to manage the game state and draw the graphics, and a `Player` class to manage the player's movement and collision detection.
@@ -38,7 +36,7 @@ This project is intended as an educational resource for learning about game deve
 
 ### Screenshots
 
-screenshots
+![image](https://user-images.githubusercontent.com/101121453/219332087-972af9bd-27fb-458a-8317-15ab53af0a75.png)
 
 ### Built With
 

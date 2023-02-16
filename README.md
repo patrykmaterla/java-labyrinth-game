@@ -1,5 +1,7 @@
 # Labyrinth Game
 
+<a name="readme-top"></a>
+
 This is a 2D game created using Java Swing. The game features a player that can move using the arrow keys, and obstacles that the player cannot cross.
 
 <!-- TABLE OF CONTENTS -->

@@ -4,7 +4,7 @@ This is a 2D game created using Java Swing. The game features a player that can 
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary><span>Table of Contents<span></summary>
+  <summary><h4>Table of Contents<h4></summary>
   <ol>
     <li>
       <a href="#about">About</a>
